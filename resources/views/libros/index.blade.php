@@ -14,6 +14,8 @@
                         <th scope="col">editorial</th>
                         <th scope="col">fecha de publicacion</th>
                         <th scope="col">numero de paginas</th>
+                        <th scope="col">Eliminar</th>
+                        <th scope="col">Actualizar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,6 +27,12 @@
                         <th>{{$libro->editorial}}</th>
                         <th>{{$libro->fechaPublicacion}}</th>
                         <th>{{$libro->numeroPaginas}}</th>
+                        <form action="{{route('libros.destroy', $libro)}}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <th><button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></th>
+                        </form>
+                        <th> <a href="{{route('libros.edit',$libro->id)}}" class="btn btn-success" role="button"><i class="fas fa-edit"></i></a> </th>
                     </tr>
                     @endforeach
                 </tbody>
